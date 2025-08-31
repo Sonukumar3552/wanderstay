@@ -16,7 +16,7 @@ main().then(() => {
 
 
 async function main() {
-    await mongoose.connect(MONGO_URL); //yiyuyfuyfyru
+    await mongoose.connect(MONGO_URL);
 }
 
 
@@ -27,10 +27,10 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
-app.get("/", (req, res) => {
-    res.send("Hi I am root");
+app.get("/", async (req, res) => {
+    const alllisting = await listing.find({});
+    res.render("listing/index", { alllisting });
 });
-
 app.get("/listing", async (req, res) => {
     const alllisting = await listing.find({});
     res.render("listing/index", { alllisting });
