@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const listing = require("../models/listing.js");
+const listing = require("./models/listing.js");
 const initData = require("../data.js"); // Path ko theek kiya gaya hai
 
 // ---- MongoDB Connection ----
