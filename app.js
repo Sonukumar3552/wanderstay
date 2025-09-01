@@ -85,5 +85,20 @@ app.get("/testlisting", async (req, res) => {
 });
 
 app.listen(8080, () => {
-    console.log("Server is listening on port 8080");
+   const mongoose = require("mongoose");
+
+async function main() {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB connected");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err);
+  }
+}
+
+main();
+;
 });
