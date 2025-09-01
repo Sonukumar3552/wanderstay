@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const initData = require("./data.js");
-const listing = require("../models/listing.js");
+const initData = require("../index/data.js");
+const listing = require("../index/models/listing.js");
 
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/mydatabase";

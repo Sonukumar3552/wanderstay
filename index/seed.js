@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const listing = require("./models/listing.js");
-const initData = require("../data.js"); // Path ko theek kiya gaya hai
+const initData = require("./data.js");
 
 // ---- MongoDB Connection ----
 const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderstay";
@@ -13,6 +13,7 @@ async function main() {
     });
     console.log("✅ MongoDB connected for seeding");
     await initDb();
+    mongoose.connection.close();
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
   }
