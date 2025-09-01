@@ -3,7 +3,8 @@ const listing = require("./models/listing.js");
 const initData = require("./data.js");
 
 // ---- MongoDB Connection ----
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderstay";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderstay";// Example for Mongoose in Node.js/Express
+mongoose.connect("mongodb://127.0.0.1:27017/mydatabase");
 
 async function main() {
   try {
