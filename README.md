@@ -78,8 +78,9 @@ http://localhost:8080
 I can deploy  on:
 
 
-Vercel (with serverless functions)
+Render https://wanderstay-1-jvbi.onrender.com/
 
 👨‍💻 Author
 
 Made with ❤️ by Sonu Kumar
+
