@@ -1,0 +1,240 @@
+/* === Base Body === */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 10vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa; /* Lighter default background */
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+}
+
+/* === Navbar === */
+#main-navbar {
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #ffffff; /* Clean white navbar */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* === Footer === */
+.footer {
+    background-color: #343a40; /* Darker footer for contrast */
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-link {
+    color: #ffc107;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.footer-social {
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.footer-social:hover {
+    color: #ffc107;
+    transform: scale(1.2);
+}
+
+/* === Cards / Listings === */
+.listing-card {
+    border: 1px solid #dee2e6 !important;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.listing-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-img-top {
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0 !important;
+}
+
+.card-body {
+    padding: 1rem !important;
+    background: #ffffff;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.card-text p {
+    font-weight: 400;
+    color: #555;
+}
+
+.card-img-overlay {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* === Buttons === */
+.btn, .add-btn, .edit-btn {
+    border-radius: 0.4rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover, .add-btn:hover, .edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* === Image / Show Page === */
+.img-main {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    margin-bottom: 1rem;
+}
+
+
+/* =================================== */
+/* === ✅ FANTASTIC NIGHT MODE === */
+/* =================================== */
+
+body.night-mode {
+    background-color: #2d3642; /* GitHub Dark Background */
+    color: #e0ebf5; /* Light text for readability */
+}
+
+/* --- Night Mode Navbar & Footer --- */
+body.night-mode #main-navbar,
+body.night-mode .footer {
+    background-color: #3c4550; /* Slightly lighter surface color */
+    border-bottom: 1px solid #30363d;
+}
+
+/* ---  FIX: Night Mode Header (Navbar) Text Color --- */
+body.night-mode .navbar-brand,
+body.night-mode .nav-link {
+    color: #e6edf3 !important; /* Important to override Bootstrap's default styles */
+}
+
+/* --- Night Mode Cards --- */
+body.night-mode .card, 
+body.night-mode .listing-card,
+body.night-mode .card-body {
+    background-color: #b6c6db;
+    color: #17191a;
+    border: 1px solid #30363d !important; /* Subtle borders */
+}
+
+
+
+/* --- Night Mode Text & Links --- */
+body.night-mode .footer-link {
+    color: #58a6ff; /* A vibrant blue for links */
+}
+
+body.night-mode .footer-link:hover,
+body.night-mode a:hover {
+    color: #79c0ff;
+}
+
+body.night-mode .text-muted {
+    color: #8b949e !important; /* Softer text color */
+}
+
+/* --- Night Mode Buttons --- */
+body.night-mode .btn-outline-dark,
+body.night-mode .btn-outline-secondary {
+    color: #c9d1d9;
+    border-color: #30363d;
+    background-color: #21262d;
+}
+body.night-mode .btn-outline-dark:hover,
+body.night-mode .btn-outline-secondary:hover {
+    background-color: #30363d;
+    border-color: #8b949e;
+    color: #f0f6fc;
+}
+
+/* --- Night Mode Forms --- */
+body.night-mode .form-control {
+    background-color: #6f88ad;
+    border: 1px solid #30363d;
+    color: hsl(208, 35%, 93%);
+}
+
+body.night-mode .form-control:focus {
+    background-color: #0d1117;
+    color: #e6edf3;
+    border-color: #58a6ff; /* Highlight focus with accent color */
+    box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+}
+
+body.night-mode .form-label,
+body.night-mode .alert {
+    background-color: transparent;
+    color: #121314;
+}
+
+/* === Misc / Navigation === */
+.nav-item .nav-link {
+    transition: all 0.2s;
+}
+
+.nav-item .nav-link:hover {
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+/* === Responsive adjustments === */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 12rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-img-top {
+        height: 10rem;
+    }
+}
+
+/* === Social Icons === */
+.fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 3rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.fa:hover {
+    transform: translateY(-2px);
+}
+
+.fa-facebook { background: #3B5998; color: white; }
+.fa-twitter { background: #55ACEE; color: white; }
+.fa-linkedin { background: #007bb5; color: white; }
+.fa-instagram { background: #e02020; color: white; }

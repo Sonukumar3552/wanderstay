@@ -1,0 +1,146 @@
+<% layout("/layouts/boilerplate") %>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .filter {
+    text-align: center;
+    opacity: 0.7;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .input-group {
+    width: 300px;
+    height: 50px;
+  }
+</style>
+
+<div id="filters">
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </div>
+
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </div>
+    <div class="filter">
+    <div><i class="fa-solid fa-mountain-city"></i></div>
+    <p>Iconic Cities</p>
+  </div>
+      <div class="filter">
+    <div><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountain City</p>
+  </div>
+      <div class="filter">
+    <div><i class="fa-solid fa-building-columns"></i></div>
+    <p>Castles</p>
+  </div>
+      <div class="filter">
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Amazing pool</p>
+  </div>
+      <div class="filter">
+    <div><i class="fa-solid fa-money-bill-wheat"></i></div>
+    <p>Farms</p>
+  </div>
+        <div class="filter">
+    <div><i class="fa-solid fa-campground"></i></i></div>
+    <p>Camping</p>
+  </div>
+        <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>Domes</p>
+  </div>
+          <div class="filter">
+    <div><i class="fa-solid fa-ship"></i></div>
+    <p>Boats</p>
+    
+  </div>
+    <div class="input-group">
+  <input type="text" id="searchBox" class="form-control" placeholder="Search listings...">
+  <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+ </div>
+
+</div>
+
+<div class="container mt-4">
+  <h3 class="text-center mb-4"> Explore All Listings</h3>
+
+  <div class="row justify-content-center g-4">
+    <% if (alllisting.length === 0) { %>
+      <div class="col-12 text-center">
+        <p class="text-muted">No listings available yet. Add one to get started!</p>
+        <a href="/listings/new" class="btn btn-outline-primary mt-2">Add Listing</a>
+      </div>
+    <% } %>
+
+    <% for (let listing of alllisting) { %>
+      <div class="col-md-4 col-sm-6 col-10">
+        <a class="text-decoration-none text-dark" href="/listings/<%= listing._id %>">
+          <div class="card shadow-sm listing-card h-100 border-0 hover-card">
+            <div class="card-img-wrapper position-relative">
+              <img
+                src="<%= listing.image && listing.image.url ? listing.image.url : 'https://tse1.mm.bing.net/th/id/OIP.FtudhIBH-HYhxMpS4TU-sAHaE8?rs=1&pid=ImgDetMain' %>"
+                class="card-img-top rounded-top"
+                alt="Listing Image"
+                style="height: 250px; object-fit: cover;"
+              />
+              <div class="card-img-overlay bg-dark bg-opacity-10"></div>
+            </div>
+
+            <div class="card-body text-center">
+              <p class="card-text mb-1 fw-bold"><%= listing.title %></p>
+              <p class="card-text text-muted mb-0">
+                ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : "0" %> / Night
+              </p>
+              <small class="text-secondary d-block"><%= listing.location || "Unknown Location" %></small>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
+<script>
+  const searchBox = document.getElementById("searchBox");
+  const cards = document.querySelectorAll(".listing-card");
+
+  searchBox.addEventListener("input", () => {
+    let query = searchBox.value.toLowerCase();
+
+    cards.forEach(card => {
+      let title = card.querySelector(".card-text.fw-bold").innerText.toLowerCase();
+      let location = card.querySelector("small").innerText.toLowerCase();
+
+      if (title.includes(query) || location.includes(query)) {
+        card.parentElement.style.display = "block";
+      } else {
+        card.parentElement.style.display = "none";
+      }
+    });
+  });
+</script>
+
+<style>
+  .hover-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+  .card-img-wrapper {
+    overflow: hidden;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+</style>

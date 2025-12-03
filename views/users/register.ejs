@@ -1,0 +1,97 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-5">
+  <div class="col-md-6 offset-md-3">
+    <div class="card shadow-sm p-4 border-0 rounded-4">
+      <h2 class="text-center mb-4 fw-bold text-primary">Create Your Account</h2>
+
+      <!-- Flash messages -->
+      <% if (error && error.length > 0) { %>
+        <div class="alert alert-danger text-center"><%= error %></div>
+      <% } %>
+      <% if (success && success.length > 0) { %>
+        <div class="alert alert-success text-center"><%= success %></div>
+      <% } %>
+
+      <!--  Registration Form -->
+      <form action="/register" method="POST" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold">Username</label>
+          <input
+            type="text"
+            class="form-control shadow-sm"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+            autocomplete="username"
+          >
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input
+            type="email"
+            class="form-control shadow-sm"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+            autocomplete="email"
+          >
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <div class="input-group">
+            <input
+              type="password"
+              class="form-control shadow-sm"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+              autocomplete="new-password"
+            >
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+              <i class="bi bi-eye"></i>
+            </button>
+            <div class="invalid-feedback">
+              Please enter a password.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-2 fw-semibold shadow-sm">
+          Register
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <p class="text-muted">
+          Already have an account?
+          <a href="/login" class="text-decoration-none fw-semibold">Login here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Password Toggle Script -->
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const passwordInput = document.querySelector('#password');
+
+  togglePassword.addEventListener('click', () => {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    togglePassword.innerHTML =
+      type === 'password' ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-slash"></i>';
+  });
+</script>
