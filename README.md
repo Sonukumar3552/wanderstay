@@ -83,6 +83,12 @@ TravelNest/
 
 Contributing
 Feel free to contribute by improving the design, adding features, or fixing bugs!
+![Capture4](https://github.com/user-attachments/assets/6c04633a-000d-4f20-8cf9-a63a8e8f9367)
+![Capture5](https://github.com/user-attachments/assets/46483b5d-5e39-4fbb-93ae-2eda57d459c0)
+![Capture](https://github.com/user-attachments/assets/f9c487cb-7f63-4152-8866-5c3b49089e3f)
+![Capture1](https://github.com/user-attachments/assets/f24f36e4-a2bd-47f9-bfc9-d2d13b1817be)
+![Capture2](https://github.com/user-attachments/assets/bd0a7cf8-911e-48e6-bd23-59f8ec5e2be6)
+![Capture3](https://github.com/user-attachments/assets/9b56eb1e-dca9-4099-b0a1-66df265ec247)
 
  Author
 Sonu Kumar
