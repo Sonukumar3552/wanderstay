@@ -1,6 +1,5 @@
 // IMPORTS & SETUP
 if (process.env.NODE_ENV !== "production") {
-  // Local pe .env se load karega
   require("dotenv").config();
 }
 
@@ -54,7 +53,7 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Render / production ke liye proxy trust
+// Render 
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
@@ -81,7 +80,6 @@ const sessionOptions = {
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    // production me secure cookie
     secure: process.env.NODE_ENV === "production",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   },
@@ -242,14 +240,27 @@ app.put(
   "/listings/:id",
   isLoggedIn,
   isOwner,
+  upload.single("image"), 
   validateListing,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+    const listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+    // If user uploaded new image
+    if (req.file) {
+      listing.image = {
+        url: req.file.path,
+        filename: req.file.filename,
+      };
+      await listing.save();
+    }
+
     req.flash("success", "Listing updated successfully!");
     res.redirect(`/listings/${id}`);
   })
 );
+
 
 // DELETE LISTING
 app.delete(

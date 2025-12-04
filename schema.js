@@ -7,6 +7,7 @@ module.exports.listingSchema = Joi.object({
     price: Joi.number().required().min(0),
     location: Joi.string().required(),
     country: Joi.string().required(),
+    image: Joi.any(),
     // image: Joi.object({
     //   url: Joi.string().allow("", null),
     //   filename: Joi.string().allow("", null)
