@@ -89,7 +89,8 @@ Sonu Kumar
 Full-Stack Developer
 
 <div align="center">
-<img src="<img width="1355" height="609" alt="image" src="https://github.com/user-attachments/assets/ff00c623-0a0c-435e-beeb-67b074db6d7f" />
+<img![Capture5](https://github.com/user-attachments/assets/0ffe1f29-bf31-4a9a-901d-1f9eb7060565)
+ />
 ">
   
 </div>
