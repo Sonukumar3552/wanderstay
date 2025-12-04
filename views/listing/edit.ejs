@@ -3,98 +3,99 @@
 <div class="container mt-4 mb-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
-      <h3 class="text-center mb-4 fw-semibold"> Edit Listing</h3>
+      <h3 class="mb-4 text-center">Edit Listing</h3>
 
       <form 
-        method="POST" 
         action="/listings/<%= listing._id %>?_method=PUT" 
-        class="needs-validation shadow-sm p-4 rounded bg-light border" 
-        novalidate
+        method="POST" 
+        enctype="multipart/form-data"   <!-- IMPORTANT -->
       >
+        <!-- Title -->
         <div class="mb-3">
-          <label for="title" class="form-label fw-semibold">Title</label>
+          <label class="form-label">Title</label>
           <input 
+            type="text" 
             name="listing[title]" 
-            id="title"
             class="form-control" 
             value="<%= listing.title %>" 
+            required
+          />
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input 
+            type="number" 
+            name="listing[price]" 
+            class="form-control" 
+            value="<%= listing.price %>" 
+            required
+          />
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label class="form-label">Location</label>
+          <input 
             type="text" 
-            required
-          >
-          <div class="invalid-feedback">Please enter a valid title.</div>
-        </div>
-
-        <div class="mb-3">
-          <label for="description" class="form-label fw-semibold">Description</label>
-          <textarea 
-            name="listing[description]" 
-            id="description"
-            class="form-control" 
-            rows="3" 
-            required
-          ><%= listing.description %></textarea>
-          <div class="invalid-feedback">Description cannot be empty.</div>
-        </div>
-
-        <div class="mb-3">
-          <label for="image" class="form-label fw-semibold">Image Link</label>
-          <input 
-            name="listing[image][url]" 
-            id="image"
-            class="form-control" 
-            value="<%= listing.image.url %>" 
-            type="text"
-          >
-        </div>
-
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label fw-semibold">Price (₹)</label>
-            <input 
-              name="listing[price]" 
-              id="price"
-              class="form-control" 
-              value="<%= listing.price %>" 
-              type="number" 
-              min="0" 
-              required
-            >
-            <div class="invalid-feedback">Please enter a valid price.</div>
-          </div>
-
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label fw-semibold">Country</label>
-            <input 
-              name="listing[country]" 
-              id="country"
-              class="form-control" 
-              value="<%= listing.country %>" 
-              type="text" 
-              required
-            >
-            <div class="invalid-feedback">Please enter a valid country.</div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="location" class="form-label fw-semibold">Location</label>
-          <input 
             name="listing[location]" 
-            id="location"
             class="form-control" 
             value="<%= listing.location %>" 
-            type="text" 
             required
-          >
-          <div class="invalid-feedback">Please enter a valid location.</div>
+          />
         </div>
 
-        <div class="text-center">
-          <button type="submit" class="btn btn-success px-4 mt-3">Update Listing</button>
+        <!-- Category -->
+        <div class="mb-3">
+          <label class="form-label">Category</label>
+          <select name="listing[category]" class="form-select">
+            <option value="rooms" <%= listing.category === "rooms" ? "selected" : "" %>>Rooms</option>
+            <option value="iconic" <%= listing.category === "iconic" ? "selected" : "" %>>Iconic Cities</option>
+            <option value="mountain" <%= listing.category === "mountain" ? "selected" : "" %>>Mountains</option>
+            <!-- jo bhi categories tum use kar rahe ho -->
+          </select>
         </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea 
+            name="listing[description]" 
+            class="form-control" 
+            rows="4"
+          ><%= listing.description %></textarea>
+        </div>
+
+        <!--  Current Image Preview -->
+        <div class="mb-3">
+          <label class="form-label d-block">Current Image</label>
+          <img 
+            src="<%= listing.image && listing.image.url ? listing.image.url : 'https://tse1.mm.bing.net/th/id/OIP.FtudhIBH-HYhxMpS4TU-sAHaE8?rs=1&pid=ImgDetMain' %>" 
+            alt="Current Image"
+            class="img-fluid rounded mb-2"
+            style="max-height: 250px; object-fit: cover;"
+          />
+        </div>
+
+        <!-- New Image Upload Option -->
+        <div class="mb-3">
+          <label class="form-label">Change Image (optional)</label>
+          <input 
+            type="file" 
+            name="image" 
+            class="form-control"
+            accept="image/*"
+          />
+          <small class="form-text text-muted">
+            “If you choose a new image, the old one will be replaced. If you don’t select anything, the existing image will remain.”
+          </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          Save Changes
+        </button>
       </form>
-
     </div>
   </div>
 </div>

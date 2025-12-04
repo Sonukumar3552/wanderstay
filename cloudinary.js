@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "TravelNest",              // koi bhi folder naam
+    folder: "TravelNest",            
     allowed_formats: ["jpeg", "jpg", "png"],
   },
 });

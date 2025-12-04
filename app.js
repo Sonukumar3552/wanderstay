@@ -179,7 +179,7 @@ app.post(
     console.log("FILE =>", req.file);
     console.log("BODY =>", req.body.listing);
 
-    const listingData = req.body.listing || req.body; // safety
+    const listingData = req.body.listing || req.body; 
 
     listingData.owner = req.user._id;
 

@@ -181,7 +181,7 @@ body.night-mode .form-control {
 
 body.night-mode .form-control:focus {
     background-color: #0d1117;
-    color: #e6edf3;
+    color: #a5b3be;
     border-color: #58a6ff; 
     box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
 }
