@@ -2,9 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review");
 
-// =============================
-// LISTING SCHEMA
-// =============================
 const listingSchema = new Schema(
   {
     title: {
@@ -19,10 +16,15 @@ const listingSchema = new Schema(
       trim: true,
     },
 
-    // Image stored as object to support { url: "..." }
     image: {
-      url: String,
-      filename: String,
+      url: {
+        type: String,
+        required: true,
+      },
+      filename: {
+        type: String,
+        required: true,
+      },
     },
 
     price: {
@@ -43,6 +45,23 @@ const listingSchema = new Schema(
       trim: true,
     },
 
+    category: {
+      type: String,
+      enum: [
+        "trending",
+        "rooms",
+        "iconic-cities",
+        "mountains",
+        "beach",
+        "camping",
+        "farm",
+        "lake",
+        "other",
+      ],
+      default: "other",
+      index: true,
+    },
+
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -57,23 +76,17 @@ const listingSchema = new Schema(
     ],
   },
   {
-    timestamps: true, // Automatically adds createdAt & updatedAt
+    timestamps: true,
   }
 );
 
-// =============================
-// CASCADE DELETE REVIEWS WHEN LISTING DELETED
-// =============================
 listingSchema.post("findOneAndDelete", async function (listing) {
-  if (listing) {
+  if (listing && listing.reviews && listing.reviews.length > 0) {
     await Review.deleteMany({
       _id: { $in: listing.reviews },
     });
   }
 });
 
-// =============================
-// EXPORT MODEL
-// =============================
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;

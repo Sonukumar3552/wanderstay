@@ -4,7 +4,7 @@ body {
     flex-direction: column;
     min-height: 10vh;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa; /* Lighter default background */
+    background-color: #f8f9fa; 
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
 }
@@ -12,13 +12,13 @@ body {
 /* === Navbar === */
 #main-navbar {
     transition: background-color 0.3s, color 0.3s;
-    background-color: #ffffff; /* Clean white navbar */
+    background-color: #ffffff; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* === Footer === */
 .footer {
-    background-color: #343a40; /* Darker footer for contrast */
+    background-color: #343a40; 
     color: white;
     padding: 2rem 0;
     margin-top: auto;
@@ -114,26 +114,23 @@ body {
 }
 
 
-/* =================================== */
-/* === ✅ FANTASTIC NIGHT MODE === */
-/* =================================== */
 
 body.night-mode {
-    background-color: #2d3642; /* GitHub Dark Background */
-    color: #e0ebf5; /* Light text for readability */
+    background-color: #2d3642; 
+    color: #e0ebf5; 
 }
 
 /* --- Night Mode Navbar & Footer --- */
 body.night-mode #main-navbar,
 body.night-mode .footer {
-    background-color: #3c4550; /* Slightly lighter surface color */
+    background-color: #3c4550; 
     border-bottom: 1px solid #30363d;
 }
 
-/* ---  FIX: Night Mode Header (Navbar) Text Color --- */
+/* --- : Night Mode Header (Navbar) Text Color --- */
 body.night-mode .navbar-brand,
 body.night-mode .nav-link {
-    color: #e6edf3 !important; /* Important to override Bootstrap's default styles */
+    color: #e6edf3 !important; 
 }
 
 /* --- Night Mode Cards --- */
@@ -142,14 +139,14 @@ body.night-mode .listing-card,
 body.night-mode .card-body {
     background-color: #b6c6db;
     color: #17191a;
-    border: 1px solid #30363d !important; /* Subtle borders */
+    border: 1px solid #30363d !important;
 }
 
 
 
 /* --- Night Mode Text & Links --- */
 body.night-mode .footer-link {
-    color: #58a6ff; /* A vibrant blue for links */
+    color: #58a6ff; 
 }
 
 body.night-mode .footer-link:hover,
@@ -158,7 +155,7 @@ body.night-mode a:hover {
 }
 
 body.night-mode .text-muted {
-    color: #8b949e !important; /* Softer text color */
+    color: #8b949e !important;
 }
 
 /* --- Night Mode Buttons --- */
@@ -185,7 +182,7 @@ body.night-mode .form-control {
 body.night-mode .form-control:focus {
     background-color: #0d1117;
     color: #e6edf3;
-    border-color: #58a6ff; /* Highlight focus with accent color */
+    border-color: #58a6ff; 
     box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
 }
 

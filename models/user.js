@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
-  // ✅ FIX: Add the username field to the schema
+ 
   username: {
     type: String,
     required: [true, "Username is required"],
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// Use 'email' for login, but 'username' is still stored
+
 userSchema.plugin(passportLocalMongoose, {
   usernameField: "email",
 });
