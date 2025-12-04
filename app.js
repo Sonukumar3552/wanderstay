@@ -294,7 +294,7 @@ app.delete(
 );
 
 // 404 FOR UNKNOWN ROUTES
-app.all("/*", (req, res, next) => {
+app.use((req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
 });
 
@@ -308,5 +308,5 @@ app.use((err, req, res, next) => {
 // START SERVER
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
-  console.log(`🚀 Server running at http://localhost:${PORT}`)
+  console.log(` Server running at http://localhost:${PORT}`)
 );
