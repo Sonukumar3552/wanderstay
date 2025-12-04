@@ -294,7 +294,7 @@ app.delete(
 );
 
 // 404 FOR UNKNOWN ROUTES
-app.all("*", (req, res, next) => {
+app.all("/*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
 });
 
